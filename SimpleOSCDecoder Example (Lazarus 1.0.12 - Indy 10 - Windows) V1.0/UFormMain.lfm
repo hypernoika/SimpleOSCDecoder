@@ -1,0 +1,145 @@
+object FormMain: TFormMain
+  Left = 413
+  Height = 327
+  Top = 151
+  Width = 667
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = 'SimpleOSCDecoder // Example application'
+  ClientHeight = 327
+  ClientWidth = 667
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  Position = poScreenCenter
+  LCLVersion = '1.0.12.0'
+  object StringGrid: TStringGrid
+    Left = 2
+    Height = 289
+    Top = 36
+    Width = 663
+    ColCount = 3
+    DefaultRowHeight = 18
+    FixedCols = 0
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect, goThumbTracking]
+    ParentFont = False
+    RowCount = 2
+    ScrollBars = ssVertical
+    TabOrder = 1
+    TitleFont.CharSet = ANSI_CHARSET
+    TitleFont.Color = clBlack
+    TitleFont.Height = -11
+    TitleFont.Name = 'Arial'
+    TitleFont.Style = [fsBold]
+    OnMouseDown = StringGridMouseDown
+    ColWidths = (
+      360
+      94
+      186
+    )
+  end
+  object Panel1: TPanel
+    Left = 2
+    Height = 33
+    Top = 2
+    Width = 663
+    ClientHeight = 33
+    ClientWidth = 663
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 8
+      Height = 14
+      Top = 10
+      Width = 67
+      Caption = 'Listening port:'
+      ParentColor = False
+    end
+    object BtnQuit: TButton
+      Left = 584
+      Height = 25
+      Top = 4
+      Width = 75
+      Caption = 'Quit'
+      OnClick = BtnQuitClick
+      TabOrder = 5
+    end
+    object EditUDPPort: TEdit
+      Left = 78
+      Height = 21
+      Top = 6
+      Width = 43
+      OnKeyPress = EditUDPPortKeyPress
+      TabOrder = 0
+      Text = '7001'
+    end
+    object BtnStartOSCMonitoring: TButton
+      Left = 126
+      Height = 25
+      Top = 4
+      Width = 117
+      Caption = 'Start OSC Monitoring'
+      OnClick = BtnStartOSCMonitoringClick
+      TabOrder = 1
+    end
+    object BtnAbout: TButton
+      Left = 520
+      Height = 25
+      Top = 4
+      Width = 61
+      Caption = 'About'
+      OnClick = BtnAboutClick
+      TabOrder = 4
+    end
+    object BtnClear: TButton
+      Left = 246
+      Height = 25
+      Top = 4
+      Width = 61
+      Caption = 'Clear'
+      Enabled = False
+      OnClick = BtnClearClick
+      TabOrder = 2
+    end
+    object BtnExporttotxt: TButton
+      Left = 310
+      Height = 25
+      Top = 4
+      Width = 79
+      Caption = 'Export to .txt'
+      Enabled = False
+      OnClick = BtnExporttotxtClick
+      TabOrder = 3
+    end
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = '.*.txt'
+    FileName = 'OSCLOG'
+    Filter = 'Text file (*.txt)|*.txt'
+    left = 32
+    top = 62
+  end
+  object PopupMenu: TPopupMenu
+    left = 32
+    top = 120
+    object Copy1: TMenuItem
+      Caption = 'Copy'
+      ShortCut = 16451
+      OnClick = Copy1Click
+    end
+  end
+  object IdUDPServer: TIdUDPServer
+    Bindings = <>
+    DefaultPort = 7001
+    OnUDPRead = IdUDPServerUDPRead
+    left = 32
+    top = 184
+  end
+end
